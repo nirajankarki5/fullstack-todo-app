@@ -34,8 +34,14 @@ function App() {
   }, []);
 
   // Handle EDIT todo
-  const handleEdit = (id) => {
+  const handleEdit = (id, title, date) => {
     console.log("edit", id);
+
+    setTitle(title);
+    setDate(date);
+
+    setIsEdit(true);
+    setEditId(id);
   };
 
   // Handle DELETE todo
@@ -60,7 +66,32 @@ function App() {
         msg: "Title and Date both required",
       });
     } else if (isEdit) {
-      //
+      try {
+        const response = await fetch(
+          `http://127.0.0.1:5000/api/todos/${editId}`,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              title,
+              date: date.toString(),
+            }),
+          }
+        );
+        setTitle("");
+        setDate("");
+        fetchList();
+
+        setAlert({
+          show: true,
+          type: "success",
+          msg: "Todo edited successfully",
+        });
+        setTitle("");
+        setDate("");
+      } catch (err) {
+        console.log("ERROR: ", err);
+      }
     } else {
       try {
         const response = await fetch("http://127.0.0.1:5000/api/todos", {

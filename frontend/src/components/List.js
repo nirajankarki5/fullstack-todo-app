@@ -11,7 +11,7 @@ const List = ({ list, handleEdit, handleDelete }) => {
             <div className="icon-div">
               <AiOutlineEdit
                 className="icon icon-edit"
-                onClick={() => handleEdit(item.id)}
+                onClick={() => handleEdit(item.id, item.title, item.date)}
               />
               <AiOutlineDelete
                 className="icon icon-delete"

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import List from "./components/List";
+import Alert from "./components/Alert";
 
 function App() {
   const [title, setTitle] = useState("");
@@ -8,14 +9,18 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [editId, setEditId] = useState(null);
+  const [alert, setAlert] = useState({
+    show: false,
+    type: "",
+    msg: "",
+  });
 
   const fetchList = async () => {
     setLoading(true);
     try {
       const response = await fetch("http://127.0.0.1:5000/api/todos");
-
       const todos = await response.json();
-      console.log(todos);
+
       setList(todos);
       setLoading(false);
     } catch (err) {
@@ -36,7 +41,17 @@ function App() {
     console.log("delete", id);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!title || !date) {
+      console.log("Title and date both required");
+    } else if (isEdit) {
+      //
+    } else {
+      console.log("SUBMITTEDDD");
+    }
+  };
 
   return (
     <div className="App">
@@ -47,7 +62,7 @@ function App() {
       </header>
 
       <main className="main-container">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="input-div">
             <input
               type="text"
@@ -63,8 +78,12 @@ function App() {
               required
             />
           </div>
-          <button type="submit">{isEdit ? "Edit" : "Add"}</button>
+          <button type="submit" onClick={handleSubmit}>
+            {isEdit ? "Edit" : "Add"}
+          </button>
         </form>
+
+        {alert.show && <Alert alert={alert} setAlert={setAlert} />}
 
         {loading ? (
           <p>loading... </p>

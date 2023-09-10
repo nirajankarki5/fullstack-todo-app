@@ -105,3 +105,20 @@ button {
 .icon-delete {
   color: #ff0000;
 }
+
+.alert-container {
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.success {
+  background-color: #d8f3dc;
+  color: #359f7a;
+}
+
+.danger {
+  background-color: #ffb3c1;
+  color: #c1121f;
+}

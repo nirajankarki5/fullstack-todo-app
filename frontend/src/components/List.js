@@ -1,4 +1,5 @@
 import React from "react";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 
 const List = ({ list }) => {
   return (
@@ -6,7 +7,11 @@ const List = ({ list }) => {
       {list.map((item) => {
         return (
           <li key={item.id} className="list-item">
-            {item.title}
+            <p>{item.title}</p>
+            <div className="icon-div">
+              <AiOutlineEdit className="icon icon-edit" />
+              <AiOutlineDelete className="icon icon-delete" />
+            </div>
           </li>
         );
       })}

@@ -67,3 +67,41 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.todo-list {
+  text-align: start;
+  list-style: none;
+}
+
+.list-item {
+  margin-bottom: 5px;
+  padding: 15px 25px;
+
+  font-size: 20px;
+  font-weight: 500;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.icon-div {
+  font-size: 24px;
+  display: flex;
+  gap: 15px;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.icon-edit {
+  color: #9ec4ec;
+}
+
+.icon-delete {
+  color: #ff0000;
+}

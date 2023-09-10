@@ -33,19 +33,32 @@ function App() {
     fetchList();
   }, []);
 
+  // Handle EDIT todo
   const handleEdit = (id) => {
     console.log("edit", id);
   };
 
-  const handleDelete = (id) => {
+  // Handle DELETE todo
+  const handleDelete = async (id) => {
     console.log("delete", id);
+    const response = await fetch(`http://127.0.0.1:5000/api/todos/${id}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    // fetchList();
+    setList(data);
   };
 
+  // Run when user clicks the button
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!title || !date) {
-      console.log("Title and date both required");
+      setAlert({
+        show: true,
+        type: "danger",
+        msg: "Title and Date both required",
+      });
     } else if (isEdit) {
       //
     } else {

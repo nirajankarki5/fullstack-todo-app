@@ -50,7 +50,7 @@ function App() {
   };
 
   // Run when user clicks the button
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!title || !date) {
@@ -62,7 +62,30 @@ function App() {
     } else if (isEdit) {
       //
     } else {
-      console.log("SUBMITTEDDD");
+      try {
+        const response = await fetch("http://127.0.0.1:5000/api/todos", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: new Date().getTime().toString(),
+            title,
+            date: date.toString(),
+          }),
+        });
+        // const data = await response.json();
+        // setList(data);
+        fetchList();
+
+        setAlert({
+          show: true,
+          type: "success",
+          msg: "Todo added successfully",
+        });
+        setTitle("");
+        setDate("");
+      } catch (err) {
+        console.log("ERROR: ", err);
+      }
     }
   };
 
@@ -96,7 +119,7 @@ function App() {
           </button>
         </form>
 
-        {alert.show && <Alert alert={alert} setAlert={setAlert} />}
+        {alert.show && <Alert alert={alert} setAlert={setAlert} list={list} />}
 
         {loading ? (
           <p>loading... </p>

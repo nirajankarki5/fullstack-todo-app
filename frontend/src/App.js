@@ -28,6 +28,16 @@ function App() {
     fetchList();
   }, []);
 
+  const handleEdit = (id) => {
+    console.log("edit", id);
+  };
+
+  const handleDelete = (id) => {
+    console.log("delete", id);
+  };
+
+  const handleSubmit = () => {};
+
   return (
     <div className="App">
       <header>
@@ -61,7 +71,13 @@ function App() {
         ) : list.length === 0 ? (
           <p>You have not set any todos</p>
         ) : (
-          <List list={list} />
+          <List
+            list={list}
+            fetchList={fetchList}
+            handleSubmit={handleSubmit}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+          />
         )}
       </main>
     </div>

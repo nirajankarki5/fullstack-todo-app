@@ -89,6 +89,7 @@ function App() {
         });
         setTitle("");
         setDate("");
+        setIsEdit(false);
       } catch (err) {
         console.log("ERROR: ", err);
       }

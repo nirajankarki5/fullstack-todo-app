@@ -7,7 +7,10 @@ const List = ({ list, handleEdit, handleDelete }) => {
       {list.map((item) => {
         return (
           <li key={item.id} className="list-item">
-            <p>{item.title}</p>
+            <div>
+              <p>{item.title}</p>
+              <p className="date">{item.date}</p>
+            </div>
             <div className="icon-div">
               <AiOutlineEdit
                 className="icon icon-edit"

@@ -88,6 +88,11 @@ button {
   border-radius: 5px;
 }
 
+.date {
+  font-size: 14px;
+  color: #999;
+}
+
 .icon-div {
   font-size: 24px;
   display: flex;

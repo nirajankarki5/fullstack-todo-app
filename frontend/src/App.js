@@ -1,19 +1,26 @@
 import { useEffect, useState } from "react";
+import List from "./components/List";
 
 function App() {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
+  const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [editId, setEditId] = useState(null);
 
   const fetchList = async () => {
+    setLoading(true);
     try {
       const response = await fetch("http://127.0.0.1:5000/api/todos");
 
       const todos = await response.json();
       console.log(todos);
+      setList(todos);
+      setLoading(false);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   };
 
@@ -48,6 +55,14 @@ function App() {
           </div>
           <button type="submit">{isEdit ? "Edit" : "Add"}</button>
         </form>
+
+        {loading ? (
+          <p>loading... </p>
+        ) : list.length === 0 ? (
+          <p>You have not set any todos</p>
+        ) : (
+          <List list={list} />
+        )}
       </main>
     </div>
   );

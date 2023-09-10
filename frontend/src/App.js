@@ -73,8 +73,6 @@ function App() {
         ) : (
           <List
             list={list}
-            fetchList={fetchList}
-            handleSubmit={handleSubmit}
             handleEdit={handleEdit}
             handleDelete={handleDelete}
           />

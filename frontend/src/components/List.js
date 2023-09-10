@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 
-const List = ({ list, fetchList, handleSubmit, handleEdit, handleDelete }) => {
+const List = ({ list, handleEdit, handleDelete }) => {
   return (
     <ul className="todo-list">
       {list.map((item) => {

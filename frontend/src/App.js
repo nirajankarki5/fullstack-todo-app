@@ -51,6 +51,11 @@ function App() {
       method: "DELETE",
     });
     const data = await response.json();
+    setAlert({
+      show: true,
+      type: "danger",
+      msg: "Todo deleted",
+    });
     fetchList();
     // setList(data);
   };
@@ -70,7 +75,7 @@ function App() {
         const response = await fetch(
           `http://127.0.0.1:5000/api/todos/${editId}`,
           {
-            method: "PUT",
+            method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               title,
@@ -98,7 +103,6 @@ function App() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            id: new Date().getTime().toString(),
             title,
             date: date.toString(),
           }),

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const connectionString = "mongodb://127.0.0.1:27017/todo";
+// const connectionString = "mongodb://127.0.0.1:27017/todo";
 
 // mongoose
 //   .connect(connectionString)
@@ -12,7 +12,7 @@ const connectionString = "mongodb://127.0.0.1:27017/todo";
 //   });
 
 const startDb = (url) => {
-  return mongoose.connect(connectionString);
+  return mongoose.connect(url);
 };
 
 module.exports = startDb;

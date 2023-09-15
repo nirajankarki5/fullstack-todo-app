@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const TodoSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: [true, "Must provide Title"],
     trim: true,
   },
 

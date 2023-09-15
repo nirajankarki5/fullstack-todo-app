@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const todoRouter = require("./routes/todo_route");
-const startDb = require("./db/connect");
+const connectDb = require("./db/connect");
 
 require("dotenv").config();
 
@@ -18,7 +18,7 @@ app.use("/api/todos", todoRouter);
 // first checks database. If database has no errors, server runs
 const start = async () => {
   try {
-    await startDb(process.env.MONGO_URI);
+    await connectDb(process.env.MONGO_URI);
     app.listen(5000, console.log("Server listening at port 5000"));
   } catch (error) {
     console.log(error);

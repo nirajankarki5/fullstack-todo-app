@@ -11,8 +11,8 @@ const mongoose = require("mongoose");
 //     console.log(err);
 //   });
 
-const startDb = (url) => {
+const connectDb = (url) => {
   return mongoose.connect(url);
 };
 
-module.exports = startDb;
+module.exports = connectDb;

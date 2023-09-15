@@ -51,8 +51,8 @@ function App() {
       method: "DELETE",
     });
     const data = await response.json();
-    // fetchList();
-    setList(data);
+    fetchList();
+    // setList(data);
   };
 
   // Run when user clicks the button
@@ -78,9 +78,6 @@ function App() {
             }),
           }
         );
-        setTitle("");
-        setDate("");
-        fetchList();
 
         setAlert({
           show: true,
@@ -89,7 +86,9 @@ function App() {
         });
         setTitle("");
         setDate("");
+        fetchList();
         setIsEdit(false);
+        setEditId(null);
       } catch (err) {
         console.log("ERROR: ", err);
       }

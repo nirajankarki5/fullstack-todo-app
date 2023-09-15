@@ -12,7 +12,7 @@ const {
 router.get("/", getAllTodos);
 router.get("/:id", getTodoById);
 router.post("/", insertTodo);
-router.put("/:id", updateTodo);
+router.patch("/:id", updateTodo);
 router.delete("/:id", deleteTodo);
 
 module.exports = router;

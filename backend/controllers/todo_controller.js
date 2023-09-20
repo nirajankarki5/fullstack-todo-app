@@ -30,12 +30,17 @@ const getTodoById = async (req, res) => {
 const insertTodo = async (req, res) => {
   console.log(req.body);
 
-  try {
-    const todo = await Todo.create(req.body);
-    res.status(201).json({ todo });
-  } catch (error) {
-    res.status(500).json({ msg: error });
-  }
+  // try {
+  const todo = await Todo.create(req.body);
+  res.status(201).json({ todo });
+  // } catch (error) {
+  //   res.status(500).json({ msg: error });
+  // }
+
+  // I CAN REMOVE TRY CATCH BLOCK IN EVERY FUNCTION SINCE I HAVE USED "express-async-errors" PACKAGE
+  // I HAVE USED error-handler middleware AND IMPORTED IN app.js
+  // ALL ERROR GOES THERE AND IS SHOWN VIA error-handler.js
+  // "writing error handler" express docs
 };
 
 // Update todo

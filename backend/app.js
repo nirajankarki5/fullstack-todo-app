@@ -1,8 +1,11 @@
 const express = require("express");
 const cors = require("cors");
+require("express-async-errors");
+
 const todoRouter = require("./routes/todo_route");
 const connectDb = require("./db/connect");
 const notFound = require("./middleware/not-found");
+const errorHandler = require("./middleware/error-handler");
 
 require("dotenv").config();
 
@@ -17,6 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/todos", todoRouter);
 app.use(notFound);
+
+app.use(errorHandler);
 
 // first checks database. If database has no errors, server runs
 const start = async () => {
